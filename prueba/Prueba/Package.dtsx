@@ -1,0 +1,1695 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/20/2023 12:17:36 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="GABRIEL-PC"
+  DTS:CreatorName="GABRIEL-PC\Gabriel"
+  DTS:DTSID="{75402835-E936-4F90-B150-BC043DD4466A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5131.0"
+  DTS:LocaleID="3082"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{213C5F4E-F47A-404E-990C-A5A9287D85CE}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{F34DECC3-1778-41F1-9F60-256F4209E80A}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=D:\analisis_datos_entrevista\Case Study - Project Specialist (1).xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[GABRIEL-PC.Practica]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{ED2EAA6A-D3BD-4FF6-801C-B859A75EC57D}"
+      DTS:ObjectName="GABRIEL-PC.Practica">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=GABRIEL-PC;Initial Catalog=Practica;Integrated Security=True;Application Name=SSIS-Package-{ED2EAA6A-D3BD-4FF6-801C-B859A75EC57D}GABRIEL-PC.Practica;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Carga Excel"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{5D758F1E-EED6-42AA-AB0D-5CEC50A23CA1}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carga Excel"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Carga Excel\CASE 1"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Origen de Excel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Origen de Excel"
+              name="CASE 1"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">'Case 1$'</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="La asignación de parámetros del comando SQL a variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga Excel\CASE 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel]"
+                  name="Salida de origen de Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[id]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[town]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[town]"
+                      length="255"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[town]"
+                      name="town"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[formatted_address]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[formatted_address]"
+                      length="255"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[formatted_address]"
+                      name="formatted_address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[enabled]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[enabled]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[enabled]"
+                      name="enabled"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[venue_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[venue_name]"
+                      length="255"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[venue_name]"
+                      name="venue_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[company_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[company_name]"
+                      length="255"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[company_name]"
+                      name="company_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[latitude]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[latitude]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[latitude]"
+                      name="latitude"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[longitude]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[longitude]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[longitude]"
+                      name="longitude"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[created_at]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[created_at]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[created_at]"
+                      name="created_at"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[phone]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[phone]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[phone]"
+                      name="phone"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[reviews_count]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[reviews_count]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[reviews_count]"
+                      name="reviews_count"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[average_rating]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[average_rating]"
+                      length="255"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[average_rating]"
+                      name="average_rating"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[vat_number]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[vat_number]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[vat_number]"
+                      name="vat_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[customers_count]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[customers_count]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[customers_count]"
+                      name="customers_count"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[staff_members_count]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[staff_members_count]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[staff_members_count]"
+                      name="staff_members_count"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[plan]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[plan]"
+                      length="255"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[plan]"
+                      name="plan"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[purchasable_online]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[purchasable_online]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[purchasable_online]"
+                      name="purchasable_online"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[accepts_online_payments]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[accepts_online_payments]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[accepts_online_payments]"
+                      name="accepts_online_payments"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[online_payment_only]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[online_payment_only]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[online_payment_only]"
+                      name="online_payment_only"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[average_time_day_appointment_per_customer]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[average_time_day_appointment_per_customer]"
+                      length="255"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[average_time_day_appointment_per_customer]"
+                      name="average_time_day_appointment_per_customer"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[daily_booking_only]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[daily_booking_only]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[daily_booking_only]"
+                      name="daily_booking_only"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[last_online_appointment]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[last_online_appointment]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[last_online_appointment]"
+                      name="last_online_appointment"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[last_salon_appointement]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[last_salon_appointement]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[last_salon_appointement]"
+                      name="last_salon_appointement"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[id]"
+                      dataType="r8"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[town]"
+                      dataType="wstr"
+                      length="255"
+                      name="town" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[formatted_address]"
+                      dataType="wstr"
+                      length="255"
+                      name="formatted_address" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[enabled]"
+                      dataType="bool"
+                      name="enabled" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[venue_name]"
+                      dataType="wstr"
+                      length="255"
+                      name="venue_name" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[company_name]"
+                      dataType="wstr"
+                      length="255"
+                      name="company_name" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[latitude]"
+                      dataType="r8"
+                      name="latitude" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[longitude]"
+                      dataType="r8"
+                      name="longitude" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[created_at]"
+                      dataType="date"
+                      name="created_at" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[phone]"
+                      dataType="r8"
+                      name="phone" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[reviews_count]"
+                      dataType="r8"
+                      name="reviews_count" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[average_rating]"
+                      dataType="wstr"
+                      length="255"
+                      name="average_rating" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[vat_number]"
+                      dataType="r8"
+                      name="vat_number" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[customers_count]"
+                      dataType="r8"
+                      name="customers_count" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[staff_members_count]"
+                      dataType="r8"
+                      name="staff_members_count" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[plan]"
+                      dataType="wstr"
+                      length="255"
+                      name="plan" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[purchasable_online]"
+                      dataType="bool"
+                      name="purchasable_online" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[accepts_online_payments]"
+                      dataType="bool"
+                      name="accepts_online_payments" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[online_payment_only]"
+                      dataType="bool"
+                      name="online_payment_only" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[average_time_day_appointment_per_customer]"
+                      dataType="wstr"
+                      length="255"
+                      name="average_time_day_appointment_per_customer" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[daily_booking_only]"
+                      dataType="bool"
+                      name="daily_booking_only" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[last_online_appointment]"
+                      dataType="date"
+                      name="last_online_appointment" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].ExternalColumns[last_salon_appointement]"
+                      dataType="date"
+                      name="last_salon_appointement" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[id]"
+                      dataType="r8"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[enabled]"
+                      dataType="bool"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[enabled]"
+                      name="enabled" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[venue_name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[venue_name]"
+                      name="venue_name" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[company_name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[company_name]"
+                      name="company_name" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[latitude]"
+                      dataType="r8"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[latitude]"
+                      name="latitude" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[longitude]"
+                      dataType="r8"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[longitude]"
+                      name="longitude" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[town]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[town]"
+                      name="town" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[formatted_address]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[formatted_address]"
+                      name="formatted_address" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[created_at]"
+                      dataType="date"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[created_at]"
+                      name="created_at" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[phone]"
+                      dataType="r8"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[phone]"
+                      name="phone" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[reviews_count]"
+                      dataType="r8"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[reviews_count]"
+                      name="reviews_count" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[average_rating]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[average_rating]"
+                      name="average_rating" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[vat_number]"
+                      dataType="r8"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[vat_number]"
+                      name="vat_number" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[customers_count]"
+                      dataType="r8"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[customers_count]"
+                      name="customers_count" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[staff_members_count]"
+                      dataType="r8"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[staff_members_count]"
+                      name="staff_members_count" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[plan]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[plan]"
+                      name="plan" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[purchasable_online]"
+                      dataType="bool"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[purchasable_online]"
+                      name="purchasable_online" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[accepts_online_payments]"
+                      dataType="bool"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[accepts_online_payments]"
+                      name="accepts_online_payments" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[online_payment_only]"
+                      dataType="bool"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[online_payment_only]"
+                      name="online_payment_only" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[average_time_day_appointment_per_customer]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[average_time_day_appointment_per_customer]"
+                      name="average_time_day_appointment_per_customer" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[daily_booking_only]"
+                      dataType="bool"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[daily_booking_only]"
+                      name="daily_booking_only" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[last_online_appointment]"
+                      dataType="date"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[last_online_appointment]"
+                      name="last_online_appointment" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[last_salon_appointement]"
+                      dataType="date"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[last_salon_appointement]"
+                      name="last_salon_appointement" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de error de origen de Excel].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga Excel\CASE 2"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Origen de Excel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Origen de Excel"
+              name="CASE 2"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">'Case 1#1$'</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="La asignación de parámetros del comando SQL a variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga Excel\CASE 2.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Carga Excel\CASE 2.Outputs[Salida de origen de Excel]"
+                  name="Salida de origen de Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 2.Outputs[Salida de origen de Excel].Columns[id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Excel\CASE 2.Outputs[Salida de origen de Excel].ExternalColumns[id]"
+                      lineageId="Package\Carga Excel\CASE 2.Outputs[Salida de origen de Excel].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 2.Outputs[Salida de origen de Excel].Columns[town]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Excel\CASE 2.Outputs[Salida de origen de Excel].ExternalColumns[town]"
+                      length="255"
+                      lineageId="Package\Carga Excel\CASE 2.Outputs[Salida de origen de Excel].Columns[town]"
+                      name="town"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 2.Outputs[Salida de origen de Excel].Columns[formatted_address]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Excel\CASE 2.Outputs[Salida de origen de Excel].ExternalColumns[formatted_address]"
+                      length="255"
+                      lineageId="Package\Carga Excel\CASE 2.Outputs[Salida de origen de Excel].Columns[formatted_address]"
+                      name="formatted_address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 2.Outputs[Salida de origen de Excel].Columns[appointments_count]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Excel\CASE 2.Outputs[Salida de origen de Excel].ExternalColumns[appointments_count]"
+                      lineageId="Package\Carga Excel\CASE 2.Outputs[Salida de origen de Excel].Columns[appointments_count]"
+                      name="appointments_count"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\CASE 2.Outputs[Salida de origen de Excel].ExternalColumns[id]"
+                      dataType="r8"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\CASE 2.Outputs[Salida de origen de Excel].ExternalColumns[town]"
+                      dataType="wstr"
+                      length="255"
+                      name="town" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\CASE 2.Outputs[Salida de origen de Excel].ExternalColumns[formatted_address]"
+                      dataType="wstr"
+                      length="255"
+                      name="formatted_address" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\CASE 2.Outputs[Salida de origen de Excel].ExternalColumns[appointments_count]"
+                      dataType="r8"
+                      name="appointments_count" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Carga Excel\CASE 2.Outputs[Salida de error de origen de Excel]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 2.Outputs[Salida de error de origen de Excel].Columns[id]"
+                      dataType="r8"
+                      lineageId="Package\Carga Excel\CASE 2.Outputs[Salida de error de origen de Excel].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 2.Outputs[Salida de error de origen de Excel].Columns[appointments_count]"
+                      dataType="r8"
+                      lineageId="Package\Carga Excel\CASE 2.Outputs[Salida de error de origen de Excel].Columns[appointments_count]"
+                      name="appointments_count" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 2.Outputs[Salida de error de origen de Excel].Columns[town]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Excel\CASE 2.Outputs[Salida de error de origen de Excel].Columns[town]"
+                      name="town" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 2.Outputs[Salida de error de origen de Excel].Columns[formatted_address]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Excel\CASE 2.Outputs[Salida de error de origen de Excel].Columns[formatted_address]"
+                      name="formatted_address" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 2.Outputs[Salida de error de origen de Excel].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Excel\CASE 2.Outputs[Salida de error de origen de Excel].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 2.Outputs[Salida de error de origen de Excel].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Excel\CASE 2.Outputs[Salida de error de origen de Excel].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga Excel\CASE 3"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Origen de Excel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Origen de Excel"
+              name="CASE 3"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">'Case 1#2$'</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="La asignación de parámetros del comando SQL a variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga Excel\CASE 3.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Carga Excel\CASE 3.Outputs[Salida de origen de Excel]"
+                  name="Salida de origen de Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 3.Outputs[Salida de origen de Excel].Columns[id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Excel\CASE 3.Outputs[Salida de origen de Excel].ExternalColumns[id]"
+                      lineageId="Package\Carga Excel\CASE 3.Outputs[Salida de origen de Excel].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 3.Outputs[Salida de origen de Excel].Columns[average_time_day_appointment_per_customer]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Excel\CASE 3.Outputs[Salida de origen de Excel].ExternalColumns[average_time_day_appointment_per_customer]"
+                      length="255"
+                      lineageId="Package\Carga Excel\CASE 3.Outputs[Salida de origen de Excel].Columns[average_time_day_appointment_per_customer]"
+                      name="average_time_day_appointment_per_customer"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 3.Outputs[Salida de origen de Excel].Columns[daily_booking_only]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Excel\CASE 3.Outputs[Salida de origen de Excel].ExternalColumns[daily_booking_only]"
+                      lineageId="Package\Carga Excel\CASE 3.Outputs[Salida de origen de Excel].Columns[daily_booking_only]"
+                      name="daily_booking_only"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 3.Outputs[Salida de origen de Excel].Columns[bookings_online]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Excel\CASE 3.Outputs[Salida de origen de Excel].ExternalColumns[bookings_online]"
+                      lineageId="Package\Carga Excel\CASE 3.Outputs[Salida de origen de Excel].Columns[bookings_online]"
+                      name="bookings_online"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\CASE 3.Outputs[Salida de origen de Excel].ExternalColumns[id]"
+                      dataType="r8"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\CASE 3.Outputs[Salida de origen de Excel].ExternalColumns[average_time_day_appointment_per_customer]"
+                      dataType="wstr"
+                      length="255"
+                      name="average_time_day_appointment_per_customer" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\CASE 3.Outputs[Salida de origen de Excel].ExternalColumns[daily_booking_only]"
+                      dataType="bool"
+                      name="daily_booking_only" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\CASE 3.Outputs[Salida de origen de Excel].ExternalColumns[bookings_online]"
+                      dataType="r8"
+                      name="bookings_online" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Carga Excel\CASE 3.Outputs[Salida de error de origen de Excel]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 3.Outputs[Salida de error de origen de Excel].Columns[id]"
+                      dataType="r8"
+                      lineageId="Package\Carga Excel\CASE 3.Outputs[Salida de error de origen de Excel].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 3.Outputs[Salida de error de origen de Excel].Columns[average_time_day_appointment_per_customer]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Excel\CASE 3.Outputs[Salida de error de origen de Excel].Columns[average_time_day_appointment_per_customer]"
+                      name="average_time_day_appointment_per_customer" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 3.Outputs[Salida de error de origen de Excel].Columns[daily_booking_only]"
+                      dataType="bool"
+                      lineageId="Package\Carga Excel\CASE 3.Outputs[Salida de error de origen de Excel].Columns[daily_booking_only]"
+                      name="daily_booking_only" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 3.Outputs[Salida de error de origen de Excel].Columns[bookings_online]"
+                      dataType="r8"
+                      lineageId="Package\Carga Excel\CASE 3.Outputs[Salida de error de origen de Excel].Columns[bookings_online]"
+                      name="bookings_online" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 3.Outputs[Salida de error de origen de Excel].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Excel\CASE 3.Outputs[Salida de error de origen de Excel].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Excel\CASE 3.Outputs[Salida de error de origen de Excel].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Excel\CASE 3.Outputs[Salida de error de origen de Excel].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga Excel\TAABLA CASE3"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
+              description="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC."
+              name="TAABLA CASE3"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Nombre de la tabla de la base de datos de destino."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"Case_3"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifique el número de filas por lote. El valor predeterminado es 0, que utiliza el mismo tamaño que el búfer interno de SSIS. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Especifica si se debe usar la interfaz SqlBulkCopy para mejorar el rendimiento de las operaciones de inserción masiva. No todos los proveedores admiten esta interfaz."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga Excel\TAABLA CASE3.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[GABRIEL-PC.Practica]"
+                  connectionManagerRefId="Package.ConnectionManagers[GABRIEL-PC.Practica]"
+                  description="Administrador de conexiones administrado"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga Excel\TAABLA CASE3.Inputs[Entrada de destino de ADO NET]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de ADO NET">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga Excel\TAABLA CASE3.Inputs[Entrada de destino de ADO NET].Columns[id]"
+                      cachedDataType="r8"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Carga Excel\TAABLA CASE3.Inputs[Entrada de destino de ADO NET].ExternalColumns[id]"
+                      lineageId="Package\Carga Excel\CASE 3.Outputs[Salida de origen de Excel].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Carga Excel\TAABLA CASE3.Inputs[Entrada de destino de ADO NET].Columns[average_time_day_appointment_per_customer]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="average_time_day_appointment_per_customer"
+                      externalMetadataColumnId="Package\Carga Excel\TAABLA CASE3.Inputs[Entrada de destino de ADO NET].ExternalColumns[average_time_day_appointment_per_customer]"
+                      lineageId="Package\Carga Excel\CASE 3.Outputs[Salida de origen de Excel].Columns[average_time_day_appointment_per_customer]" />
+                    <inputColumn
+                      refId="Package\Carga Excel\TAABLA CASE3.Inputs[Entrada de destino de ADO NET].Columns[daily_booking_only]"
+                      cachedDataType="bool"
+                      cachedName="daily_booking_only"
+                      externalMetadataColumnId="Package\Carga Excel\TAABLA CASE3.Inputs[Entrada de destino de ADO NET].ExternalColumns[daily_booking_only]"
+                      lineageId="Package\Carga Excel\CASE 3.Outputs[Salida de origen de Excel].Columns[daily_booking_only]" />
+                    <inputColumn
+                      refId="Package\Carga Excel\TAABLA CASE3.Inputs[Entrada de destino de ADO NET].Columns[bookings_online]"
+                      cachedDataType="r8"
+                      cachedName="bookings_online"
+                      externalMetadataColumnId="Package\Carga Excel\TAABLA CASE3.Inputs[Entrada de destino de ADO NET].ExternalColumns[bookings_online]"
+                      lineageId="Package\Carga Excel\CASE 3.Outputs[Salida de origen de Excel].Columns[bookings_online]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\TAABLA CASE3.Inputs[Entrada de destino de ADO NET].ExternalColumns[id]"
+                      dataType="r8"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\TAABLA CASE3.Inputs[Entrada de destino de ADO NET].ExternalColumns[average_time_day_appointment_per_customer]"
+                      dataType="wstr"
+                      length="255"
+                      name="average_time_day_appointment_per_customer" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\TAABLA CASE3.Inputs[Entrada de destino de ADO NET].ExternalColumns[daily_booking_only]"
+                      dataType="bool"
+                      name="daily_booking_only" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\TAABLA CASE3.Inputs[Entrada de destino de ADO NET].ExternalColumns[bookings_online]"
+                      dataType="r8"
+                      name="bookings_online" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga Excel\TAABLA CASE3.Outputs[Salida de error de destino de ADO NET]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de ADO NET"
+                  synchronousInputId="Package\Carga Excel\TAABLA CASE3.Inputs[Entrada de destino de ADO NET]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Excel\TAABLA CASE3.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Excel\TAABLA CASE3.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Excel\TAABLA CASE3.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Excel\TAABLA CASE3.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga Excel\TABLA CASE1"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
+              description="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC."
+              name="TABLA CASE1"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Nombre de la tabla de la base de datos de destino."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"Case_1"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifique el número de filas por lote. El valor predeterminado es 0, que utiliza el mismo tamaño que el búfer interno de SSIS. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Especifica si se debe usar la interfaz SqlBulkCopy para mejorar el rendimiento de las operaciones de inserción masiva. No todos los proveedores admiten esta interfaz."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga Excel\TABLA CASE1.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[GABRIEL-PC.Practica]"
+                  connectionManagerRefId="Package.ConnectionManagers[GABRIEL-PC.Practica]"
+                  description="Administrador de conexiones administrado"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de ADO NET">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].Columns[id]"
+                      cachedDataType="r8"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[id]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].Columns[town]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="town"
+                      externalMetadataColumnId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[town]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[town]" />
+                    <inputColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].Columns[formatted_address]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="formatted_address"
+                      externalMetadataColumnId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[formatted_address]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[formatted_address]" />
+                    <inputColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].Columns[enabled]"
+                      cachedDataType="bool"
+                      cachedName="enabled"
+                      externalMetadataColumnId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[enabled]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[enabled]" />
+                    <inputColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].Columns[venue_name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="venue_name"
+                      externalMetadataColumnId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[venue_name]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[venue_name]" />
+                    <inputColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].Columns[company_name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="company_name"
+                      externalMetadataColumnId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[company_name]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[company_name]" />
+                    <inputColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].Columns[latitude]"
+                      cachedDataType="r8"
+                      cachedName="latitude"
+                      externalMetadataColumnId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[latitude]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[latitude]" />
+                    <inputColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].Columns[longitude]"
+                      cachedDataType="r8"
+                      cachedName="longitude"
+                      externalMetadataColumnId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[longitude]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[longitude]" />
+                    <inputColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].Columns[created_at]"
+                      cachedDataType="date"
+                      cachedName="created_at"
+                      externalMetadataColumnId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[created_at]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[created_at]" />
+                    <inputColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].Columns[phone]"
+                      cachedDataType="r8"
+                      cachedName="phone"
+                      externalMetadataColumnId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[phone]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[phone]" />
+                    <inputColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].Columns[reviews_count]"
+                      cachedDataType="r8"
+                      cachedName="reviews_count"
+                      externalMetadataColumnId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[reviews_count]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[reviews_count]" />
+                    <inputColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].Columns[average_rating]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="average_rating"
+                      externalMetadataColumnId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[average_rating]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[average_rating]" />
+                    <inputColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].Columns[vat_number]"
+                      cachedDataType="r8"
+                      cachedName="vat_number"
+                      externalMetadataColumnId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[vat_number]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[vat_number]" />
+                    <inputColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].Columns[customers_count]"
+                      cachedDataType="r8"
+                      cachedName="customers_count"
+                      externalMetadataColumnId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[customers_count]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[customers_count]" />
+                    <inputColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].Columns[staff_members_count]"
+                      cachedDataType="r8"
+                      cachedName="staff_members_count"
+                      externalMetadataColumnId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[staff_members_count]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[staff_members_count]" />
+                    <inputColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].Columns[plan]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="plan"
+                      externalMetadataColumnId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[plan]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[plan]" />
+                    <inputColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].Columns[purchasable_online]"
+                      cachedDataType="bool"
+                      cachedName="purchasable_online"
+                      externalMetadataColumnId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[purchasable_online]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[purchasable_online]" />
+                    <inputColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].Columns[accepts_online_payments]"
+                      cachedDataType="bool"
+                      cachedName="accepts_online_payments"
+                      externalMetadataColumnId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[accepts_online_payments]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[accepts_online_payments]" />
+                    <inputColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].Columns[online_payment_only]"
+                      cachedDataType="bool"
+                      cachedName="online_payment_only"
+                      externalMetadataColumnId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[online_payment_only]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[online_payment_only]" />
+                    <inputColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].Columns[average_time_day_appointment_per_customer]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="average_time_day_appointment_per_customer"
+                      externalMetadataColumnId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[average_time_day_appointment_per_customer]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[average_time_day_appointment_per_customer]" />
+                    <inputColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].Columns[daily_booking_only]"
+                      cachedDataType="bool"
+                      cachedName="daily_booking_only"
+                      externalMetadataColumnId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[daily_booking_only]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[daily_booking_only]" />
+                    <inputColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].Columns[last_online_appointment]"
+                      cachedDataType="date"
+                      cachedName="last_online_appointment"
+                      externalMetadataColumnId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[last_online_appointment]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[last_online_appointment]" />
+                    <inputColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].Columns[last_salon_appointement]"
+                      cachedDataType="date"
+                      cachedName="last_salon_appointement"
+                      externalMetadataColumnId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[last_salon_appointement]"
+                      lineageId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel].Columns[last_salon_appointement]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[id]"
+                      dataType="r8"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[town]"
+                      dataType="wstr"
+                      length="255"
+                      name="town" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[formatted_address]"
+                      dataType="wstr"
+                      length="255"
+                      name="formatted_address" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[enabled]"
+                      dataType="bool"
+                      name="enabled" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[venue_name]"
+                      dataType="wstr"
+                      length="255"
+                      name="venue_name" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[company_name]"
+                      dataType="wstr"
+                      length="255"
+                      name="company_name" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[latitude]"
+                      dataType="r8"
+                      name="latitude" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[longitude]"
+                      dataType="r8"
+                      name="longitude" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp"
+                      name="created_at" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[phone]"
+                      dataType="r8"
+                      name="phone" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[reviews_count]"
+                      dataType="r8"
+                      name="reviews_count" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[average_rating]"
+                      dataType="wstr"
+                      length="255"
+                      name="average_rating" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[vat_number]"
+                      dataType="r8"
+                      name="vat_number" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[customers_count]"
+                      dataType="r8"
+                      name="customers_count" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[staff_members_count]"
+                      dataType="r8"
+                      name="staff_members_count" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[plan]"
+                      dataType="wstr"
+                      length="255"
+                      name="plan" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[purchasable_online]"
+                      dataType="bool"
+                      name="purchasable_online" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[accepts_online_payments]"
+                      dataType="bool"
+                      name="accepts_online_payments" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[online_payment_only]"
+                      dataType="bool"
+                      name="online_payment_only" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[average_time_day_appointment_per_customer]"
+                      dataType="wstr"
+                      length="255"
+                      name="average_time_day_appointment_per_customer" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[daily_booking_only]"
+                      dataType="bool"
+                      name="daily_booking_only" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[last_online_appointment]"
+                      dataType="dbTimeStamp"
+                      name="last_online_appointment" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET].ExternalColumns[last_salon_appointement]"
+                      dataType="dbTimeStamp"
+                      name="last_salon_appointement" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga Excel\TABLA CASE1.Outputs[Salida de error de destino de ADO NET]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de ADO NET"
+                  synchronousInputId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Excel\TABLA CASE1.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Excel\TABLA CASE1.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Excel\TABLA CASE1.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga Excel\TABLA CASE2"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
+              description="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC."
+              name="TABLA CASE2"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Nombre de la tabla de la base de datos de destino."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"Case_2"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifique el número de filas por lote. El valor predeterminado es 0, que utiliza el mismo tamaño que el búfer interno de SSIS. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Especifica si se debe usar la interfaz SqlBulkCopy para mejorar el rendimiento de las operaciones de inserción masiva. No todos los proveedores admiten esta interfaz."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga Excel\TABLA CASE2.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[GABRIEL-PC.Practica]"
+                  connectionManagerRefId="Package.ConnectionManagers[GABRIEL-PC.Practica]"
+                  description="Administrador de conexiones administrado"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga Excel\TABLA CASE2.Inputs[Entrada de destino de ADO NET]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de ADO NET">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga Excel\TABLA CASE2.Inputs[Entrada de destino de ADO NET].Columns[id]"
+                      cachedDataType="r8"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Carga Excel\TABLA CASE2.Inputs[Entrada de destino de ADO NET].ExternalColumns[id]"
+                      lineageId="Package\Carga Excel\CASE 2.Outputs[Salida de origen de Excel].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Carga Excel\TABLA CASE2.Inputs[Entrada de destino de ADO NET].Columns[town]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="town"
+                      externalMetadataColumnId="Package\Carga Excel\TABLA CASE2.Inputs[Entrada de destino de ADO NET].ExternalColumns[town]"
+                      lineageId="Package\Carga Excel\CASE 2.Outputs[Salida de origen de Excel].Columns[town]" />
+                    <inputColumn
+                      refId="Package\Carga Excel\TABLA CASE2.Inputs[Entrada de destino de ADO NET].Columns[formatted_address]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="formatted_address"
+                      externalMetadataColumnId="Package\Carga Excel\TABLA CASE2.Inputs[Entrada de destino de ADO NET].ExternalColumns[formatted_address]"
+                      lineageId="Package\Carga Excel\CASE 2.Outputs[Salida de origen de Excel].Columns[formatted_address]" />
+                    <inputColumn
+                      refId="Package\Carga Excel\TABLA CASE2.Inputs[Entrada de destino de ADO NET].Columns[appointments_count]"
+                      cachedDataType="r8"
+                      cachedName="appointments_count"
+                      externalMetadataColumnId="Package\Carga Excel\TABLA CASE2.Inputs[Entrada de destino de ADO NET].ExternalColumns[appointments_count]"
+                      lineageId="Package\Carga Excel\CASE 2.Outputs[Salida de origen de Excel].Columns[appointments_count]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\TABLA CASE2.Inputs[Entrada de destino de ADO NET].ExternalColumns[id]"
+                      dataType="r8"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\TABLA CASE2.Inputs[Entrada de destino de ADO NET].ExternalColumns[town]"
+                      dataType="wstr"
+                      length="255"
+                      name="town" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\TABLA CASE2.Inputs[Entrada de destino de ADO NET].ExternalColumns[formatted_address]"
+                      dataType="wstr"
+                      length="255"
+                      name="formatted_address" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Excel\TABLA CASE2.Inputs[Entrada de destino de ADO NET].ExternalColumns[appointments_count]"
+                      dataType="r8"
+                      name="appointments_count" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga Excel\TABLA CASE2.Outputs[Salida de error de destino de ADO NET]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de ADO NET"
+                  synchronousInputId="Package\Carga Excel\TABLA CASE2.Inputs[Entrada de destino de ADO NET]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Excel\TABLA CASE2.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Excel\TABLA CASE2.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Excel\TABLA CASE2.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Excel\TABLA CASE2.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Carga Excel.Paths[Salida de origen de Excel]"
+              endId="Package\Carga Excel\TABLA CASE2.Inputs[Entrada de destino de ADO NET]"
+              name="Salida de origen de Excel"
+              startId="Package\Carga Excel\CASE 2.Outputs[Salida de origen de Excel]" />
+            <path
+              refId="Package\Carga Excel.Paths[Salida de origen de Excel1]"
+              endId="Package\Carga Excel\TAABLA CASE3.Inputs[Entrada de destino de ADO NET]"
+              name="Salida de origen de Excel"
+              startId="Package\Carga Excel\CASE 3.Outputs[Salida de origen de Excel]" />
+            <path
+              refId="Package\Carga Excel.Paths[Salida de origen de Excel2]"
+              endId="Package\Carga Excel\TABLA CASE1.Inputs[Entrada de destino de ADO NET]"
+              name="Salida de origen de Excel"
+              startId="Package\Carga Excel\CASE 1.Outputs[Salida de origen de Excel]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="135.2,41.6"
+          Id="Package\Carga Excel"
+          TopLeft="126.666659745905,56.3333329415984" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Carga Excel">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="115.2,41.6"
+          Id="Package\Carga Excel\CASE 1"
+          TopLeft="66.6666695806709,37.4666661359204" />
+        <NodeLayout
+          Size="148,41.6"
+          Id="Package\Carga Excel\TABLA CASE1"
+          TopLeft="114.666668865416,133.466664705409" />
+        <NodeLayout
+          Size="115.2,41.6"
+          Id="Package\Carga Excel\CASE 2"
+          TopLeft="334.999988252918,33.1333327762948" />
+        <NodeLayout
+          Size="148,41.6"
+          Id="Package\Carga Excel\TABLA CASE2"
+          TopLeft="382.999987537663,129.133331345783" />
+        <NodeLayout
+          Size="115.2,41.6"
+          Id="Package\Carga Excel\CASE 3"
+          TopLeft="585.833307881323,24.3999994369347" />
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\Carga Excel\TAABLA CASE3"
+          TopLeft="633.833307166068,120.399998006423" />
+        <EdgeLayout
+          Id="Package\Carga Excel.Paths[Salida de origen de Excel]"
+          TopLeft="392.599988252918,74.7333327762948">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="64.399999284745,54.3999985694885"
+              Start="0,0"
+              End="64.399999284745,46.8999985694885">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.1999992847443" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.1999992847443"
+                    Point2="0,27.1999992847443"
+                    Point3="4,27.1999992847443" />
+                  <mssgle:LineSegment
+                    End="60.399999284745,27.1999992847443" />
+                  <mssgle:CubicBezierSegment
+                    Point1="60.399999284745,27.1999992847443"
+                    Point2="64.399999284745,27.1999992847443"
+                    Point3="64.399999284745,31.1999992847443" />
+                  <mssgle:LineSegment
+                    End="64.399999284745,46.8999985694885" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga Excel.Paths[Salida de origen de Excel1]"
+          TopLeft="643.433307881323,65.9999994369347">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="67.9999992847451,54.3999985694887"
+              Start="0,0"
+              End="67.9999992847451,46.8999985694887">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.1999992847443" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.1999992847443"
+                    Point2="0,27.1999992847443"
+                    Point3="4,27.1999992847443" />
+                  <mssgle:LineSegment
+                    End="63.9999992847451,27.1999992847443" />
+                  <mssgle:CubicBezierSegment
+                    Point1="63.9999992847451,27.1999992847443"
+                    Point2="67.9999992847451,27.1999992847443"
+                    Point3="67.9999992847451,31.1999992847443" />
+                  <mssgle:LineSegment
+                    End="67.9999992847451,46.8999985694887" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga Excel.Paths[Salida de origen de Excel2]"
+          TopLeft="124.266669580671,79.0666661359204">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="64.399999284745,54.3999985694885"
+              Start="0,0"
+              End="64.399999284745,46.8999985694885">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.1999992847443" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.1999992847443"
+                    Point2="0,27.1999992847443"
+                    Point3="4,27.1999992847443" />
+                  <mssgle:LineSegment
+                    End="60.399999284745,27.1999992847443" />
+                  <mssgle:CubicBezierSegment
+                    Point1="60.399999284745,27.1999992847443"
+                    Point2="64.399999284745,27.1999992847443"
+                    Point3="64.399999284745,31.1999992847443" />
+                  <mssgle:LineSegment
+                    End="64.399999284745,46.8999985694885" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga Excel\TABLA CASE1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga Excel\CASE 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga Excel\CASE 2">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga Excel\TABLA CASE2">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga Excel\CASE 3">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga Excel\TAABLA CASE3">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
